@@ -1,0 +1,84 @@
+---
+layout: layouts/base.njk
+permalink: /bien-dans-votre-tete.html
+title: "Gestion du stress et des émotions : PNL, TeLiPro | 77"
+description: "Stress, anxiété, phobies, sommeil : retrouvez votre équilibre émotionnel avec la PNL et TeLiPro, au cabinet de Saint-Germain-sur-Morin ou en visio."
+fil:
+  - titre: Accompagnements
+  - titre: Bien dans votre tête
+---
+{%- from "icons.njk" import icon -%}
+
+<section class="page-hero">
+  <div class="container page-hero__grid">
+    <div>
+      <span class="eyebrow">Accompagnement · Les émotions</span>
+      <h1>Bien dans votre tête, <em>à distance ou au cabinet</em> à Saint-Germain-sur-Morin</h1>
+      <p class="lead">Un accompagnement bienveillant pour vous aider dans la gestion de vos émotions, avec les ressources concrètes et rapidement efficaces des thérapies brèves, de la psychogénéalogie et du développement personnel.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="{{ site.rdv }}" target="_blank" rel="noopener">{{ icon("calendar") }} Prendre rendez-vous</a>
+        <a class="btn btn--ghost" href="/bien-dans-votre-peau">Bien dans votre peau</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Mes outils</span>
+      <h2>Les principales techniques que j'utilise <em>et que je vous propose</em></h2>
+    </div>
+    <div class="grid grid--2">
+      <article class="card card--feature card--tete reveal">
+        <div class="card__icon">{{ icon("chat") }}</div>
+        <span class="card__tag">Programmation neuro-linguistique</span>
+        <h3>La PNL</h3>
+        <p>Issue du champ thérapeutique de la psychothérapie, la PNL est un ensemble d'outils et de techniques de développement personnel qui permettent de mieux communiquer avec soi-même et avec les autres, la finalité étant d'accéder au changement et d'atteindre ses objectifs.</p>
+        <p>La question que pose la PNL face à une problématique est d'abord <strong>COMMENT aller mieux plutôt que POURQUOI je vais mal.</strong></p>
+        <p>Concrètement, dans ma pratique, en consultation, j'utilise la PNL comme un outil complémentaire, pour vous aider à trouver par vous-même et en vous-même les ressources nécessaires à la résolution de vos problématiques émotionnelles auxquelles sont souvent corrélés les symptômes ou troubles physiques pour lesquels vous venez consulter.</p>
+      </article>
+      <article class="card card--feature card--telipro reveal">
+        <div class="card__icon card__icon--sun">{{ icon("spark") }}</div>
+        <span class="card__tag">Technique de libération profonde</span>
+        <h3>TeLiPro</h3>
+        <p>Issue du champ thérapeutique des thérapies brèves et de l'hypnose, TeLiPro est une technique de libération profonde d'ancrages négatifs qui empêchent votre bien-être et votre équilibre intérieur : c'est le cas des phobies, des troubles alimentaires, des attaques de panique, des troubles anxieux, de l'insomnie, de troubles physiques fonctionnels etc.</p>
+        <p>Utilisée lors de la première séance, c'est une technique qui aide à débloquer un très grand nombre de situations et à commencer le travail de revitalisation holistique avec un esprit libéré, allégé et positif. <strong>C'est ce que j'appelle un starter idéal !</strong></p>
+        <a class="link-arrow" href="/telipro-technique-de-liberation-profonde">Tout savoir sur TeLiPro {{ icon("arrow") }}</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--teal section--tight">
+  <div class="container quote reveal">
+    {{ icon("quote") }}
+    <blockquote>
+      <p>L'homme doit harmoniser l'esprit et le corps</p>
+      <cite>Hippocrate</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container text-center">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Mots clés inspirants</span>
+      <h2>Ce que j'utilise dans ma pratique <em>de la naturopathie</em></h2>
+    </div>
+    <ul class="chips reveal" style="justify-content:center; max-width:760px; margin-inline:auto">
+      <li class="chip chip--sky">Communication</li>
+      <li class="chip chip--sun">Créativité</li>
+      <li class="chip chip--leaf">Adaptation</li>
+      <li class="chip chip--sky">Changement</li>
+      <li class="chip chip--sun">Ressources</li>
+      <li class="chip chip--leaf">Confiance en soi</li>
+      <li class="chip chip--sky">Épanouissement</li>
+      <li class="chip chip--sun">Acceptation</li>
+      <li class="chip chip--leaf">Bienveillance</li>
+      <li class="chip chip--sky">Action</li>
+    </ul>
+  </div>
+</section>
+
+{% include "partials/cta.njk" %}

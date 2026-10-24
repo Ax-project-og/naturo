@@ -1,0 +1,36 @@
+---
+layout: layouts/base.njk
+permalink: /plan-du-site.html
+title: "Plan du site | Gaïaroma"
+description: "Toutes les pages du site de Gaïaroma, Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin."
+fil:
+  - titre: Plan du site
+---
+<section class="page-hero">
+  <div class="container container--narrow">
+    <h1>Plan du site</h1>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container container--narrow prose">
+    <h2>Le cabinet</h2>
+    <ul class="sitemap-list">
+      <li><a href="/">Accueil</a></li>
+      {%- for item in navigation %}
+        {%- if item.enfants %}{% for e in item.enfants %}<li><a href="{{ e.url }}">{{ e.titre }}</a></li>{% endfor %}
+        {%- else %}<li><a href="{{ item.url }}">{{ item.titre }}</a></li>{% endif %}
+      {%- endfor %}
+      <li><a href="/mentions-legales">Mentions légales</a></li>
+    </ul>
+    <h2>Le blog</h2>
+    {%- for c in categories %}
+    <h3>{{ c.nom }}</h3>
+    <ul>
+      {%- for post in collections.articles | filterBy("categorie", c.slug) %}
+      <li><a href="{{ post.url | cleanUrl }}">{{ post.data.title }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endfor %}
+  </div>
+</section>

@@ -1,0 +1,15 @@
+{%- from "icons.njk" import icon -%}
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta reveal">
+      <div>
+        <h2>{{ ctaTitre or "Envie d'être bien dans votre peau et bien dans votre tête ?" }}</h2>
+        <p>{{ ctaTexte or "Réservez votre consultation au cabinet ou en visio, ou demandez un rendez-vous téléphonique de 15 mn, informatif et gratuit." }}</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--sun" href="{{ site.rdv }}" target="_blank" rel="noopener">{{ icon("calendar") }} Prendre rendez-vous</a>
+        <a class="cta__phone" href="{{ site.telephoneLien }}">{{ icon("phone", "icon icon--sm") }} {{ site.telephone }}</a>
+      </div>
+    </div>
+  </div>
+</section>

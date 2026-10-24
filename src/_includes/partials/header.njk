@@ -1,0 +1,56 @@
+{%- from "icons.njk" import icon -%}
+{%- set current = page.url | cleanUrl -%}
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/" aria-label="{{ site.marque }} — accueil">
+      <picture>
+        <source srcset="/assets/img/logo-symbole.webp" type="image/webp">
+        <img src="/assets/img/logo-symbole.png" alt="" width="174" height="176">
+      </picture>
+      <span class="brand__text">
+        <span class="brand__name">Isabelle Gayet</span>
+        <span class="brand__role">Naturopathe · {{ site.marque }}</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="nav-toggle__open">{{ icon("menu") }}</span>
+      <span class="nav-toggle__close">{{ icon("close") }}</span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+
+    <nav class="nav" id="menu-principal" aria-label="Menu principal">
+      <ul class="nav__list">
+        {%- for item in navigation %}
+        {%- if item.enfants %}
+        {%- set actif = false %}
+        {%- for e in item.enfants %}{% if e.url == current %}{% set actif = true %}{% endif %}{% endfor %}
+        <li class="nav__item nav__item--has-sub">
+          <button class="nav__link nav__sub-toggle{% if actif %} is-active{% endif %}" type="button" aria-expanded="false" aria-controls="sous-menu-{{ loop.index }}">
+            {{ item.titre }} {{ icon("chevron", "icon icon--sm") }}
+          </button>
+          <ul class="nav__sub" id="sous-menu-{{ loop.index }}">
+            {%- for e in item.enfants %}
+            <li>
+              <a href="{{ e.url }}"{% if e.url == current %} aria-current="page"{% endif %}>
+                <strong>{{ e.titre }}</strong>
+                <span>{{ e.texte }}</span>
+              </a>
+            </li>
+            {%- endfor %}
+          </ul>
+        </li>
+        {%- else %}
+        <li class="nav__item">
+          <a class="nav__link" href="{{ item.url }}"{% if item.url == current or (item.url == "/blog" and current.startsWith("/blog")) %} aria-current="page"{% endif %}>{{ item.titre }}</a>
+        </li>
+        {%- endif %}
+        {%- endfor %}
+      </ul>
+      <div class="nav__actions">
+        <a class="nav__phone" href="{{ site.telephoneLien }}">{{ icon("phone", "icon icon--sm") }} {{ site.telephone }}</a>
+        <a class="btn btn--primary btn--sm" href="{{ site.rdv }}" target="_blank" rel="noopener">Prendre rendez-vous</a>
+      </div>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,64 @@
+{%- from "icons.njk" import icon -%}
+{%- set canonical = page.url | cleanUrl | absoluteUrl(site.url) -%}
+{%- set ogImage = (ogImage or "/assets/img/partage-gaiaroma.jpg") | absoluteUrl(site.url) -%}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ seoTitle or title }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ canonical }}">
+  {%- if noindex %}
+  <meta name="robots" content="noindex, follow">
+  {%- endif %}
+  <meta name="theme-color" content="#256777">
+
+  <meta property="og:type" content="{{ 'article' if layout == 'layouts/article.njk' else 'website' }}">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="{{ site.marque }} — {{ site.nom }}, naturopathe">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:title" content="{{ seoTitle or title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="{{ ogImage }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/assets/img/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preload" href="/assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/nunito-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  {% include "partials/schema.njk" %}
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  {% include "partials/header.njk" %}
+
+  <main id="contenu">
+    {%- if fil %}
+    <nav class="breadcrumb container" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="/">Accueil</a></li>
+        {%- for item in fil %}
+        <li>{% if loop.last %}<span aria-current="page">{{ item.titre }}</span>{% elif item.url %}<a href="{{ item.url }}">{{ item.titre }}</a>{% else %}<span>{{ item.titre }}</span>{% endif %}</li>
+        {%- endfor %}
+      </ol>
+    </nav>
+    {%- endif %}
+    {{ content | safe }}
+  </main>
+
+  {% include "partials/footer.njk" %}
+
+  <div class="mobile-cta" aria-label="Contact rapide">
+    <a class="mobile-cta__btn" href="{{ site.telephoneLien }}">{{ icon("phone") }}<span>Appeler</span></a>
+    <a class="mobile-cta__btn mobile-cta__btn--primary" href="{{ site.rdv }}" target="_blank" rel="noopener">{{ icon("calendar") }}<span>Prendre rendez-vous</span></a>
+  </div>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{%- from "icons.njk" import icon -%}
+{%- set cat = categories | findBy("slug", post.data.categorie) -%}
+<a class="post-card reveal" href="{{ post.url | cleanUrl }}" data-category="{{ cat.slug }}">
+  <div class="cover cover--{{ cat.slug }}" aria-hidden="true">
+    {% include "partials/cover-motif.njk" %}
+    <span class="cover__icon">{{ icon(cat.icone) }}</span>
+  </div>
+  <div class="post-card__body">
+    <div class="post-meta"><span class="chip">{{ cat.nom }}</span><time datetime="{{ post.date | dateIso }}">{{ post.date | dateFr }}</time></div>
+    <h3>{{ post.data.title }}</h3>
+    <p>{{ post.data.description }}</p>
+    <span class="link-arrow">Lire l'article {{ icon("arrow") }}</span>
+  </div>
+</a>

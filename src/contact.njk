@@ -1,0 +1,87 @@
+---
+layout: layouts/base.njk
+permalink: /prendre-rendez-vous-naturopathe.html
+title: "Contact et rendez-vous | Naturopathe à Saint-Germain-sur-Morin"
+description: "Prenez rendez-vous avec Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin : par téléphone au 06 78 89 21 06, par formulaire ou en ligne."
+fil:
+  - titre: Contact
+---
+{%- from "icons.njk" import icon -%}
+
+<section class="page-hero">
+  <div class="container page-hero__grid">
+    <div>
+      <span class="eyebrow">Contact & rendez-vous</span>
+      <h1>Prendre rendez-vous avec Isabelle Gayet, <em>naturopathe</em> à Saint-Germain-sur-Morin</h1>
+      <p class="lead">Contactez-moi et n'hésitez pas à me laisser un message, si je ne réponds pas, c'est que je suis en consultation. Je vous rappellerai ou répondrai dans la journée.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand">
+  <div class="container">
+    <div class="grid grid--3">
+      <a class="card card--link reveal" href="{{ site.rdv }}" target="_blank" rel="noopener">
+        <div class="card__icon card__icon--sun">{{ icon("calendar") }}</div>
+        <h2 style="font-size:1.4rem">Réserver en ligne</h2>
+        <p>Choisissez directement votre créneau sur Medoucine, au cabinet ou en visio.</p>
+        <span class="link-arrow">Prendre rendez-vous {{ icon("arrow") }}</span>
+      </a>
+      <a class="card card--link reveal" href="{{ site.telephoneLien }}">
+        <div class="card__icon">{{ icon("phone") }}</div>
+        <h2 style="font-size:1.4rem">Appeler</h2>
+        <p>Pour un rendez-vous ou un rdv téléphonique de 15 mn informatif gratuit.</p>
+        <span class="link-arrow">{{ site.telephone }} {{ icon("arrow") }}</span>
+      </a>
+      <a class="card card--link reveal" href="mailto:{{ site.email }}">
+        <div class="card__icon card__icon--leaf">{{ icon("mail") }}</div>
+        <h2 style="font-size:1.4rem">Écrire</h2>
+        <p>Par mail, ou avec le formulaire ci-dessous.</p>
+        <span class="link-arrow">{{ site.email }} {{ icon("arrow") }}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split split--top">
+    <div class="reveal">
+      <span class="eyebrow">M'écrire</span>
+      <h2>Une question ?</h2>
+      <p>Que vous souhaitiez prendre un rendez-vous ou avoir un complément d'informations, je vous répondrai avec plaisir.</p>
+      <form class="form card" data-contact-form data-email="{{ site.email }}"{% if site.formulaireAction %} action="{{ site.formulaireAction }}" method="post"{% endif %}>
+        <div class="form__row">
+          <div class="field"><label for="f-prenom">Prénom</label><input id="f-prenom" name="prenom" autocomplete="given-name" required></div>
+          <div class="field"><label for="f-nom">Nom</label><input id="f-nom" name="nom" autocomplete="family-name" required></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="f-tel">Téléphone <span>(facultatif)</span></label><input id="f-tel" name="telephone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field">
+          <label for="f-sujet">Sujet</label>
+          <select id="f-sujet" name="sujet">
+            <option>Demande de rendez-vous</option>
+            <option>Rdv téléphonique gratuit de 15 mn</option>
+            <option>Demande d'information</option>
+            <option>Forfaits coaching</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-message">Message</label><textarea id="f-message" name="message" required></textarea></div>
+        <p class="form__hint">Vos informations servent uniquement à vous répondre. Voir les <a href="/mentions-legales#donnees">mentions légales</a>.</p>
+        <div><button class="btn btn--primary" type="submit">{{ icon("mail") }} Envoyer</button></div>
+        <p class="form__status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Le cabinet</span>
+      <h2>{{ site.marque }}</h2>
+      <ul class="info-list">
+        <li><span class="icon-wrap">{{ icon("pin") }}</span><div><strong>Adresse</strong>{{ site.adresse.rue }}, {{ site.adresse.codePostal }} {{ site.adresse.ville }}<br><a href="{{ site.itineraire }}" target="_blank" rel="noopener">Calculer mon itinéraire</a></div></li>
+        <li><span class="icon-wrap">{{ icon("instagram") }}</span><div><strong>Instagram</strong><a href="{{ site.instagram }}" target="_blank" rel="noopener me">{{ site.instagramPseudo }}</a></div></li>
+      </ul>
+      {% include "partials/carte.njk" %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for p in collections.indexables %}
+  <url>
+    <loc>{{ p.url | cleanUrl | absoluteUrl(site.url) }}</loc>
+    <lastmod>{{ (p.data.modifie or (p.date if p.data.layout == "layouts/article.njk" else build.date)) | dateIso }}</lastmod>
+  </url>
+{%- endfor %}
+</urlset>

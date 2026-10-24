@@ -1,0 +1,85 @@
+---
+layout: layouts/base.njk
+permalink: /telipro-technique-de-liberation-profonde.html
+title: "TeLiPro : technique de libération profonde | Gaïaroma"
+description: "TeLiPro, technique issue des thérapies brèves et de l'hypnose : libérer les blocages émotionnels (phobies, anxiété, insomnie…). Séance de 45 à 60 mn au cabinet."
+fil:
+  - titre: Accompagnements
+  - titre: TeLiPro
+---
+{%- from "icons.njk" import icon -%}
+{%- set seance = site.tarifs[2] -%}
+
+<section class="page-hero">
+  <div class="container page-hero__grid">
+    <div>
+      <span class="eyebrow">Accompagnement · Le starter</span>
+      <h1>TeLiPro, <em>technique de libération profonde</em></h1>
+      <p class="lead">Une technique de libération profonde des empreintes émotionnelles négatives que je peux être amenée à vous proposer, pour vous donner l'impulsion de départ.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="{{ site.rdv }}" target="_blank" rel="noopener">{{ icon("calendar") }} Prendre rendez-vous</a>
+        <a class="btn btn--ghost" href="{{ site.telephoneLien }}">{{ icon("phone") }} {{ site.telephone }}</a>
+      </div>
+    </div>
+    <aside class="price price--featured">
+      <span class="price__badge">Séance seule</span>
+      <h2 class="h3" style="font-size:1.35rem">{{ seance.nom }}</h2>
+      <p class="price__amount">{{ seance.prix }}<small> €</small></p>
+      <p class="price__time">{{ icon("clock", "icon icon--sm") }} {{ seance.duree }}</p>
+      <ul class="checklist"><li>Uniquement au cabinet</li><li>Peut aussi être proposée lors de la première consultation</li></ul>
+    </aside>
+  </div>
+</section>
+
+<section class="section section--sand">
+  <div class="container split split--top">
+    <div class="prose reveal">
+      <span class="eyebrow">Qu'est-ce que c'est ?</span>
+      <h2>Libérer les ancrages négatifs</h2>
+      <p>Issue du champ thérapeutique des <strong>thérapies brèves et de l'hypnose</strong>, TeLiPro est une technique de libération profonde d'ancrages négatifs qui empêchent votre bien-être et votre équilibre intérieur.</p>
+      <p>TeLiPro va neutraliser les ancrages négatifs qui vous bloquent dans une situation conflictuelle entre votre corps et votre esprit et génèrent des symptômes fonctionnels.</p>
+    </div>
+    <div class="card reveal">
+      <h3>C'est le cas par exemple :</h3>
+      <ul class="checklist">
+        <li>des phobies</li>
+        <li>des troubles alimentaires</li>
+        <li>des attaques de panique</li>
+        <li>des troubles anxieux</li>
+        <li>de l'insomnie</li>
+        <li>de troubles physiques fonctionnels…</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Dans votre accompagnement</span>
+      <h2>Un starter idéal <em>dès la première séance</em></h2>
+    </div>
+    <div class="grid grid--3">
+      <div class="card reveal">
+        <div class="card__icon card__icon--sun">{{ icon("spark") }}</div>
+        <h3>L'impulsion de départ</h3>
+        <p>Je vous proposerai éventuellement de pratiquer pendant la première séance une technique de libération profonde, TeLiPro, pour vous permettre de vous débarrasser des blocages à l'origine de votre problématique.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card__icon">{{ icon("sun") }}</div>
+        <h3>Un esprit libéré</h3>
+        <p>C'est une technique qui aide à débloquer un très grand nombre de situations et à commencer le travail de revitalisation holistique avec un esprit libéré, allégé et positif.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card__icon card__icon--leaf">{{ icon("leaf") }}</div>
+        <h3>Relayée par le coaching</h3>
+        <p>Cette technique agit comme un starter et fait la différence pour la poursuite de votre coaching et sa réussite. Elle sera ensuite relayée par les autres ressources que je propose.</p>
+      </div>
+    </div>
+    <p class="note mt-lg">Lors d'une première consultation bilan, je peux être amenée, en fonction de la problématique qui vous amène, à vous proposer une séance de TeLiPro dans les jours qui suivent, pour vous permettre d'aborder votre processus de changement libéré.e de vos blocages.</p>
+  </div>
+</section>
+
+{% set ctaTitre = "Envie d'essayer TeLiPro ?" %}
+{% set ctaTexte = "Séance de TeLiPro seule au cabinet (45 à 60 mn, 50 €), ou intégrée à votre accompagnement en santé naturelle." %}
+{% include "partials/cta.njk" %}

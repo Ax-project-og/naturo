@@ -1,0 +1,582 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kit SEO Gaïaroma</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout : colonne unique de 900px, onglets en tête, cartes empilées (modèle du kit 3L-DECO) */
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #232733;
+    --border: #2e3340;
+    --text: #e4e6ed;
+    --text-dim: #8b90a0;
+    --accent: #4f8cff;
+    --accent2: #a78bfa;
+    --accent-glow: rgba(79,140,255,0.15);
+    --on-accent: #ffffff;
+    --green: #34d399;
+    --green-bg: rgba(52,211,153,0.12);
+    --orange: #fb923c;
+    --orange-bg: rgba(251,146,60,0.12);
+    --red: #f87171;
+    --red-bg: rgba(248,113,113,0.12);
+    --code-bg: #0d0f14;
+    --code-fg: #c9d1d9;
+    --radius: 12px;
+    --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #f3f5f9; --surface: #ffffff; --surface2: #eef1f6; --border: #dce1ea;
+      --text: #1b1f2a; --text-dim: #5c6375; --accent: #2f6fe4; --accent2: #7c4fe0;
+      --accent-glow: rgba(47,111,228,0.10); --on-accent: #ffffff;
+      --green: #0e8f63; --green-bg: rgba(14,143,99,0.10);
+      --orange: #c45a0c; --orange-bg: rgba(196,90,12,0.10);
+      --red: #c93a3a; --red-bg: rgba(201,58,58,0.10);
+      --code-bg: #f6f8fb; --code-fg: #24292f;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f3f5f9; --surface: #ffffff; --surface2: #eef1f6; --border: #dce1ea;
+    --text: #1b1f2a; --text-dim: #5c6375; --accent: #2f6fe4; --accent2: #7c4fe0;
+    --accent-glow: rgba(47,111,228,0.10); --on-accent: #ffffff;
+    --green: #0e8f63; --green-bg: rgba(14,143,99,0.10);
+    --orange: #c45a0c; --orange-bg: rgba(196,90,12,0.10);
+    --red: #c93a3a; --red-bg: rgba(201,58,58,0.10);
+    --code-bg: #f6f8fb; --code-fg: #24292f;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.6; font-size: 15px; }
+  .wrap { max-width: 900px; margin: 0 auto; padding-block: 24px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  h1 { font-size: 28px; line-height: 1.25; font-weight: 700; margin: 0 0 8px; text-wrap: balance; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: var(--accent); }
+  .subtitle { color: var(--text-dim); font-size: 15px; margin: 0 0 28px; }
+  a { color: var(--accent); }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 4px; }
+  .tab { flex: 1; padding: 11px 12px; border: none; background: transparent; color: var(--text-dim); font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; border-radius: 8px; transition: background .2s, color .2s; white-space: nowrap; }
+  .tab[aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+  .tab:hover:not([aria-selected="true"]) { color: var(--text); background: var(--surface2); }
+  .tab:focus-visible, .check:focus-visible, .copy-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .panel[hidden] { display: none; }
+  .panel { display: flex; flex-direction: column; gap: 16px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; min-width: 0; }
+  .card h2 { font-size: 18px; font-weight: 700; margin: 0 0 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; text-wrap: balance; }
+  .card h3 { font-size: 15px; font-weight: 600; margin: 20px 0 10px; color: var(--accent); }
+  .card h3:first-of-type { margin-top: 4px; }
+  .card p { margin: 0 0 10px; }
+  .muted { color: var(--text-dim); font-size: 14px; }
+
+  /* Synthèse */
+  .score-head { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+  .score-ring { width: 128px; height: 128px; position: relative; flex-shrink: 0; }
+  .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .score-ring .val { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .score-ring .num { font-size: 34px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+  .score-ring .of { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .score-text { min-width: 0; }
+  .score-text .lead { font-size: 16px; font-weight: 500; margin: 0 0 6px; }
+
+  .axes { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .axe { display: grid; grid-template-columns: 210px 1fr 44px; gap: 12px; align-items: center; }
+  .axe-label { font-size: 14px; min-width: 0; }
+  .axe-track { position: relative; height: 10px; background: var(--surface2); border-radius: 6px; overflow: hidden; }
+  .axe-fill { height: 100%; border-radius: 6px; }
+  .axe-mark { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 0; border-left: 1px dashed var(--text-dim); opacity: .7; }
+  .axe-val { font-family: var(--font-mono); font-size: 13px; font-weight: 500; text-align: right; font-variant-numeric: tabular-nums; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-size: 12px; color: var(--text-dim); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+  .findings { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .findings li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; }
+  .findings .n { width: 28px; height: 28px; border-radius: 8px; background: var(--red-bg); color: var(--red); font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  .findings strong { display: block; font-size: 14px; }
+  .findings .d { font-size: 13px; color: var(--text-dim); }
+  .strengths { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--green-bg); color: var(--green); font-size: 12.5px; font-weight: 500; padding: 4px 10px; border-radius: 6px; }
+
+  /* Checklist */
+  .checklist { list-style: none; margin: 0; padding: 0; }
+  .checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .checklist li:last-child { border-bottom: none; }
+  .check { width: 22px; height: 22px; border: 2px solid var(--border); border-radius: 6px; flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s, border-color .2s; margin-top: 2px; background: transparent; padding: 0; color: var(--on-accent); font-size: 13px; font-weight: 700; font-family: inherit; }
+  .check[aria-checked="true"] { background: var(--green); border-color: var(--green); }
+  .check[aria-checked="true"]::after { content: '✓'; }
+  .check-text { flex: 1; min-width: 0; }
+  .check-label { font-weight: 500; font-size: 14px; }
+  li.is-done .check-label { color: var(--text-dim); text-decoration: line-through; }
+  .check-detail { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+  .ref { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); border: 1px solid var(--border); border-radius: 4px; padding: 0 5px; margin-left: 6px; vertical-align: 1px; }
+
+  .priority-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+  .p-urgent { background: var(--red-bg); color: var(--red); }
+  .p-important { background: var(--orange-bg); color: var(--orange); }
+  .p-nice { background: var(--green-bg); color: var(--green); }
+
+  .progress-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .progress-text { font-size: 13px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .progress-bar { background: var(--surface2); border-radius: 8px; height: 8px; margin: 8px 0 4px; overflow: hidden; }
+  .progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--green)); border-radius: 8px; transition: width .5s ease; }
+  .reset-btn { background: none; border: none; color: var(--text-dim); font-family: inherit; font-size: 12px; cursor: pointer; text-decoration: underline; padding: 0; }
+
+  /* Code */
+  .code-wrap { position: relative; margin: 12px 0; }
+  .code-block { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; padding-top: 40px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.7; overflow-x: auto; white-space: pre; color: var(--code-fg); margin: 0; }
+  .copy-btn { position: absolute; top: 8px; right: 8px; background: var(--surface2); border: 1px solid var(--border); color: var(--text-dim); padding: 4px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; font-family: inherit; transition: background .2s, color .2s; }
+  .copy-btn:hover { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .copy-btn.inline { position: static; margin-left: auto; flex-shrink: 0; }
+
+  .tip { background: var(--accent-glow); border-left: 3px solid var(--accent); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 14px 0; font-size: 13px; }
+  .tip strong { color: var(--accent); }
+  .tip.warn { background: var(--orange-bg); border-left-color: var(--orange); }
+  .tip.warn strong { color: var(--orange); }
+
+  /* Annuaires */
+  .annuaire-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .annuaire-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; min-width: 0; display: flex; flex-direction: column; }
+  .annuaire-item h4 { font-size: 14px; font-weight: 600; margin: 0 0 4px; }
+  .annuaire-item p { font-size: 12.5px; color: var(--text-dim); margin: 0; flex: 1; }
+  .tag { align-self: flex-start; display: inline-block; background: var(--accent-glow); color: var(--accent); font-size: 11px; padding: 2px 6px; border-radius: 4px; margin-top: 8px; }
+  .tag.fix { background: var(--red-bg); color: var(--red); }
+
+  /* Balises */
+  .meta-list { display: flex; flex-direction: column; gap: 14px; }
+  .meta-item { background: var(--surface2); border-radius: 8px; padding: 16px; min-width: 0; }
+  .meta-top { display: flex; align-items: flex-start; gap: 12px; }
+  .meta-page { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .4px; }
+  .meta-old { font-size: 14px; color: var(--red); text-decoration: line-through; overflow-wrap: anywhere; }
+  .meta-new { font-size: 14px; font-weight: 600; margin-top: 4px; overflow-wrap: anywhere; }
+  .meta-desc { font-size: 13px; color: var(--text); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); overflow-wrap: anywhere; }
+  .meta-desc .k, .meta-new .k { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); font-weight: 400; margin-left: 6px; }
+  .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--text-dim); display: block; margin-bottom: 2px; }
+  .meta-note { font-size: 12px; color: var(--green); margin-top: 6px; }
+
+  @media (max-width: 640px) {
+    .tabs { flex-wrap: wrap; }
+    .tab { flex: 1 1 calc(33% - 4px); font-size: 12.5px; padding: 10px 8px; }
+    .annuaire-grid { grid-template-columns: 1fr; }
+    .score-head { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .axe { grid-template-columns: 1fr 40px; gap: 4px 10px; }
+    .axe-label { grid-column: 1 / -1; }
+    .card { padding: 18px; }
+    h1 { font-size: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <h1>🛠️ Kit SEO Pratique — Gaïaroma</h1>
+  <p class="subtitle">Audit et outils prêts à l'emploi pour isabelle-gayet.fr · analyse de 19 pages, 16 octobre 2026.</p>
+
+  <div class="tabs" role="tablist" aria-label="Sections du kit">
+    <button class="tab" role="tab" id="tab-synthese" data-panel="synthese" aria-selected="true">📊 Synthèse</button>
+    <button class="tab" role="tab" id="tab-checklist" data-panel="checklist" aria-selected="false">✅ Checklist</button>
+    <button class="tab" role="tab" id="tab-balises" data-panel="balises" aria-selected="false">🏷️ Balises</button>
+    <button class="tab" role="tab" id="tab-jsonld" data-panel="jsonld" aria-selected="false">📋 Code JSON-LD</button>
+    <button class="tab" role="tab" id="tab-annuaires" data-panel="annuaires" aria-selected="false">🔗 Annuaires</button>
+  </div>
+
+  <!-- SYNTHÈSE -->
+  <section class="panel" id="panel-synthese" role="tabpanel" aria-labelledby="tab-synthese">
+    <div class="card">
+      <div class="score-head">
+        <div class="score-ring" aria-label="Note globale 44 sur 100">
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface2)" stroke-width="12"></circle>
+            <circle id="ring" cx="60" cy="60" r="52" fill="none" stroke="var(--orange)" stroke-width="12" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="183"></circle>
+          </svg>
+          <div class="val"><span class="num" id="score-num">44</span><span class="of">/ 100</span></div>
+        </div>
+        <div class="score-text">
+          <p class="lead">Une base technique saine, mais un SEO local incohérent, des balises vides et un blog presque à l'arrêt.</p>
+          <p class="muted">Note globale = moyenne des 8 axes notés sur 10. Six corrections urgentes, faisables en une semaine, suffisent à remonter nettement le SEO local et les balises.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Notes par axe</h2>
+      <div class="axes" id="axes"></div>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--red)"></i>3/10 ou moins : prioritaire</span>
+        <span><i class="dot" style="background:var(--orange)"></i>4 à 5/10 : à améliorer</span>
+        <span><i class="dot" style="background:var(--green)"></i>6/10 et plus : correct</span>
+        <span>┆ seuil 5/10</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🔍 Les 3 constats qui pèsent le plus</h2>
+      <ol class="findings">
+        <li><span class="n">1</span><div><strong>L'adresse n'est pas la même partout</strong><span class="d">Le site indique Saint-Germain-sur-Morin, mais la fiche Google s'appelle « Naturopathe à Ferrières-en-Brie », la carte intégrée et le bus cité renvoient à Ferrières, et Medoucine affiche « Paris, à distance ». Google ne sait pas où placer le cabinet.</span></div></li>
+        <li><span class="n">2</span><div><strong>Aucune meta description sur 19 pages</strong><span class="d">Le H1 de l'accueil se limite à « Isabelle Gayet » (et apparaît deux fois), et presque toutes les images sont sans attribut alt.</span></div></li>
+        <li><span class="n">3</span><div><strong>Le mot « naturopathe » est absent des titles et des H1</strong><span class="d">C'est pourtant la recherche principale des patients. Le blog compte 5 articles, dont 4 publiés en mars 2023.</span></div></li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>💪 Points forts à conserver</h2>
+      <div class="strengths">
+        <span class="chip">HTTPS</span>
+        <span class="chip">Sitemap et robots.txt corrects</span>
+        <span class="chip">Canonical sur chaque page</span>
+        <span class="chip">URL lisibles</span>
+        <span class="chip">Titles uniques avec la ville</span>
+        <span class="chip">Pages de prestations de 400 à 1 000 mots</span>
+        <span class="chip">9 témoignages sur le site</span>
+        <span class="chip">28 avis 5/5 sur Medoucine</span>
+        <span class="chip">Cadre de pratique clairement expliqué</span>
+      </div>
+      <div class="tip"><strong>Non mesuré :</strong> la vitesse (Core Web Vitals) et les positions réelles dans Google. À vérifier dans la Search Console et sur <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">PageSpeed Insights</a>.</div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="panel" id="panel-checklist" role="tabpanel" aria-labelledby="tab-checklist" hidden>
+    <div class="card">
+      <h2>Progression des corrections</h2>
+      <div class="progress-row">
+        <div class="progress-text" id="progress-label">0 / 0 tâches complétées</div>
+        <button class="reset-btn" id="reset-btn" type="button">Tout décocher</button>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <p class="muted" style="margin:6px 0 0">Les cases cochées sont mémorisées dans ce navigateur uniquement.</p>
+    </div>
+
+    <div class="card">
+      <h2>🔴 Corrections urgentes <span class="priority-badge p-urgent">Cette semaine</span></h2>
+      <ul class="checklist" data-group="urgent"></ul>
+    </div>
+    <div class="card">
+      <h2>🟠 Améliorations importantes <span class="priority-badge p-important">1 à 2 mois</span></h2>
+      <ul class="checklist" data-group="important"></ul>
+    </div>
+    <div class="card">
+      <h2>🟢 Finitions <span class="priority-badge p-nice">3 mois</span></h2>
+      <ul class="checklist" data-group="nice"></ul>
+    </div>
+  </section>
+
+  <!-- BALISES -->
+  <section class="panel" id="panel-balises" role="tabpanel" aria-labelledby="tab-balises" hidden>
+    <div class="card">
+      <h2>🏷️ Titles et meta descriptions optimisés</h2>
+      <p class="muted">Dans Simplébo → paramètres SEO de chaque page. Titles de 53 à 62 caractères, meta descriptions de 134 à 151 caractères. Aucune page n'a de meta description aujourd'hui.</p>
+      <div class="meta-list" id="meta-list"></div>
+      <div class="tip"><strong>Articles de blog :</strong> reprendre le titre de l'article dans le title, sans le suffixe « | Blog », et écrire une meta description de 150 caractères qui résume le conseil principal.</div>
+    </div>
+  </section>
+
+  <!-- JSON-LD -->
+  <section class="panel" id="panel-jsonld" role="tabpanel" aria-labelledby="tab-jsonld" hidden>
+    <div class="card">
+      <h2>📋 Balisage structuré du cabinet</h2>
+      <p class="muted">Ce code décrit le cabinet à Google : nom, adresse, téléphone, tarifs, zone desservie. À placer dans l'en-tête de toutes les pages. Simplébo ne propose pas toujours l'ajout de code personnalisé : si l'option n'apparaît pas dans votre tableau de bord, demandez-le au support Simplébo.</p>
+      <div class="tip"><strong>À compléter :</strong> ajoutez vos horaires (champ « openingHoursSpecification ») et l'URL d'une vraie photo du cabinet (champ « image ») avant de publier.</div>
+      <div class="code-wrap">
+        <button class="copy-btn" type="button" data-copy="jsonld-business">Copier</button>
+        <pre class="code-block" id="jsonld-business"></pre>
+      </div>
+
+      <h3>Balisage de la praticienne (page Qui suis-je ?)</h3>
+      <p class="muted">Relie vos certifications à votre nom, ce qui renforce la confiance de Google sur un sujet de santé.</p>
+      <div class="code-wrap">
+        <button class="copy-btn" type="button" data-copy="jsonld-person">Copier</button>
+        <pre class="code-block" id="jsonld-person"></pre>
+      </div>
+
+      <div class="tip warn"><strong>Inutile pour la FAQ et les avis :</strong> depuis 2023, Google réserve les FAQ enrichies aux sites officiels de santé et d'administration, et n'affiche pas d'étoiles pour les avis qu'une entreprise publie sur son propre site.</div>
+    </div>
+  </section>
+
+  <!-- ANNUAIRES -->
+  <section class="panel" id="panel-annuaires" role="tabpanel" aria-labelledby="tab-annuaires" hidden>
+    <div class="card">
+      <h2>🔗 Où être présente, avec la même adresse partout</h2>
+      <p class="muted">Chaque fiche apporte un lien vers le site et de la visibilité locale. Règle d'or : nom, adresse et téléphone écrits à l'identique, au caractère près.</p>
+      <div class="tip warn"><strong>D'abord corriger l'existant :</strong> Google et Medoucine affichent encore une ancienne adresse (Ferrières-en-Brie ou Paris). Inutile d'ouvrir de nouvelles fiches tant que celles-ci ne sont pas à jour.</div>
+      <div id="annuaires"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  // ---------- Données ----------
+  var AXES = [
+    { label: 'SEO local', note: 3 },
+    { label: 'Blog', note: 3 },
+    { label: 'Balises (title, meta, Hn, alt)', note: 4 },
+    { label: 'Mots-clés et ciblage', note: 4 },
+    { label: 'Maillage interne', note: 4 },
+    { label: 'Contenu des pages services', note: 5 },
+    { label: 'Confiance (E-E-A-T)', note: 5 },
+    { label: 'Technique et indexation', note: 7 }
+  ];
+
+  var TASKS = {
+    urgent: [
+      ['u1', 'Mettre à jour la fiche Google Business Profile', "Adresse : 6 rue de Melun, 77860 Saint-Germain-sur-Morin. Catégorie principale « Naturopathe ». Nom réel de l'activité, sans ajouter de ville ni de mot-clé (Google le sanctionne). Le lien actuel du site pointe vers une fiche nommée « Isabelle Gayet - Naturopathe à Ferrières-en-Brie »."],
+      ['u2', 'Corriger la fiche Medoucine', "Elle affiche « Paris, à distance ». Renseigner l'adresse du cabinet, écrite exactement comme sur le site."],
+      ['u3', 'Remplacer la carte et l’info transport', "Page Infos pratiques : la carte intégrée vise l'ancienne fiche de Ferrières, l'image du cabinet a pour alt « naturopathie à Ferrières-en-Brie » et le bus Pep's 27 dessert Ferrières."],
+      ['u4', 'Réécrire la liste des villes desservies', "La liste actuelle (Bussy-Saint-Georges, Roissy-en-Brie, Pontcarré…) date de l'ancien cabinet. Citer Couilly-Pont-aux-Dames, Esbly, Montry, Coupvray, Chessy, Serris, Magny-le-Hongre, Crécy-la-Chapelle, Meaux. La garder sur Infos pratiques et la retirer du pied de page des 19 pages."],
+      ['u5', 'Écrire une meta description pour chaque page', '0 page sur 19 en a une. Textes prêts à coller dans l’onglet Balises.'],
+      ['u6', 'Mettre « naturopathe » dans les titles et les H1', "Accueil, Qui suis-je ? et La consultation. Aujourd'hui les titres parlent seulement de « coach en bien-être » et de « santé naturelle »."],
+      ['u7', 'Corriger les H1', "Accueil : remplacer les deux H1 « Isabelle Gayet » par un seul, « Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin ». Contact : supprimer le H2 identique placé avant le H1. Bien dans votre tête : supprimer le titre « Nouveau titre » resté en ligne."],
+      ['u8', 'Revoir les témoignages et l’article fertilité', "Retirer ou reformuler les témoignages qui évoquent l'arrêt d'anti-inflammatoires prescrits, une glycémie de diabétique stabilisée ou une endométriose « soignée ». Ajouter des sources et le rappel « en complément d'un suivi médical » dans l'article fertilité."]
+    ],
+    important: [
+      ['m1', 'Créer une page TeLiPro', 'Technique de niche, peu concurrencée, déjà proposée en séance seule à 50 €. 600 à 900 mots : principe, déroulé, pour qui, tarif, lien de rendez-vous.'],
+      ['m2', 'Créer 5 pages par problématique', 'Sommeil et stress, troubles digestifs, ménopause / SOPK / endométriose, fertilité et grossesse, poids. Chacune avec un H1 ciblé (« Naturopathe ménopause en Seine-et-Marne »), une FAQ et un bouton de rendez-vous.'],
+      ['m3', 'Baliser les 5 articles existants', 'Transformer les intertitres en gras en vrais H2, ajouter 1 ou 2 images avec alt, et un encadré auteur (photo, certifications, lien vers Qui suis-je ?).'],
+      ['m4', 'Relier les pages entre elles', 'Aucun article ne contient de lien dans son texte : en ajouter 2 à 3 vers les pages de prestations. Ajouter le lien manquant vers la page Liberlo sur Qui suis-je ?.'],
+      ['m5', 'Remplir les attributs alt et ajouter de vraies photos', 'La photo d’Isabelle, les visuels des prestations et les vignettes du blog n’ont pas d’alt. Remplacer les photos Unsplash par 3 à 5 photos du cabinet et de la praticienne, aussi utiles pour la fiche Google.'],
+      ['m6', 'Ajouter le balisage JSON-LD', 'Voir l’onglet Code JSON-LD.'],
+      ['m7', 'Demander un avis Google après chaque suivi', 'Les 28 avis Medoucine profitent surtout à Medoucine. Envoyer le lien direct d’avis Google par WhatsApp ou mail, répondre à chaque avis, et dater les témoignages du site.'],
+      ['m8', 'Ajouter le SIRET et les horaires', 'Le SIRET est « non renseigné » dans les mentions légales, alors qu’il est obligatoire. Les horaires ne figurent nulle part : les ajouter sur Infos pratiques et dans la fiche Google.'],
+      ['m9', 'Relancer le blog : 2 articles par mois', 'Sujets reliés aux pages de problématiques : immunité en automne, sommeil, ménopause, digestion. 800 mots minimum, sources citées.'],
+      ['m10', 'Inscrire le site dans Google Search Console', 'Gratuit. Soumettre le sitemap, suivre les requêtes « naturopathe + ville » et les erreurs d’indexation.']
+    ],
+    nice: [
+      ['f1', 'Raccourcir les titles trop longs', 'Qui suis-je ? (85 caractères), La consultation (84) et Bien dans votre tête (92) sont coupés dans Google.'],
+      ['f2', 'Corriger les coquilles des titles', '« bien etre » sans accent, double espace dans « Isabelle  Gayet », espace avant la virgule dans « Gaïaroma , ».'],
+      ['f3', 'Traiter les 4 pages de catégories du blog', '1 ou 2 articles chacune, aucun texte : les passer en noindex ou ajouter 100 mots d’introduction.'],
+      ['f4', 'Compléter les partages sur les réseaux', 'Descriptions Open Graph vides, carte Twitter en « summary », pas d’image de partage sur le blog ni sur l’article fertilité.'],
+      ['f5', 'Simplifier le bloc « Mots clés inspirants »', '10 titres H3 d’un seul mot : en faire une simple liste à puces.'],
+      ['f6', 'Unifier « La consultation » et « La séance »', 'Même page, deux libellés (menu et pied de page). Garder un seul nom, sans changer l’URL.'],
+      ['f7', 'Compresser les images', 'L’image de La consultation fait 6 239 px de large. Tester ensuite la vitesse sur PageSpeed Insights.'],
+      ['f8', 'Nettoyer les liens sortants', 'Lien Instagram avec paramètre « igshid », lien Google raccourci en goo.gl : les remplacer par les adresses propres.']
+    ]
+  };
+
+  var METAS = [
+    { page: 'Accueil', state: '⚠️ « coach », pas « naturopathe »', old: 'Coach en bien-être et santé naturelle à Saint-Germain-sur-Morin | Gaïaroma', title: 'Naturopathe à Saint-Germain-sur-Morin (77) | Isabelle Gayet', desc: 'Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin : bilan de vitalité, phytothérapie, gestion du stress et TeLiPro, au cabinet ou en visio.', note: 'H1 proposé : « Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin »' },
+    { page: 'Qui suis-je ?', state: '⚠️ trop long (85 car.)', old: 'Isabelle Gayet, praticienne en bien être et santé naturelle à Saint-Germain-sur-Morin', title: 'Isabelle Gayet, naturopathe certifiée en Seine-et-Marne', desc: "Naturopathe, praticienne PNL et TeLiPro : découvrez le parcours, les certifications et l'approche d'Isabelle Gayet, à Saint-Germain-sur-Morin." },
+    { page: 'Bien dans votre peau', state: '⚠️ vague', old: 'Soutenir et revitaliser le corps à Saint-Germain-sur-Morin', title: 'Naturopathie, phytothérapie et détox | Saint-Germain-sur-Morin', desc: 'Fatigue, digestion, troubles fonctionnels : un programme sur mesure en 3 étapes avec phytothérapie, aromathérapie et micronutrition. Visio ou cabinet.' },
+    { page: 'Bien dans votre tête', state: '⚠️ trop long (92 car.)', old: 'Accompagner le mental et rééquilibrer la sphère psychoémotionnelle à Saint-Germain-sur-Morin', title: 'Gestion du stress et des émotions : PNL, TeLiPro | 77', desc: 'Stress, anxiété, phobies, sommeil : retrouvez votre équilibre émotionnel avec la PNL et TeLiPro, au cabinet de Saint-Germain-sur-Morin ou en visio.' },
+    { page: 'La consultation', state: '⚠️ trop long, sans accent', old: 'La séance avec votre coach en bien etre et santé naturelle à Saint-Germain-sur-Morin', title: 'Consultation de naturopathie : déroulement et bilan | Gaïaroma', desc: 'Comment se passe une consultation de naturopathie ? Bilan de vitalité, programme personnalisé, suivi par mail ou WhatsApp. Première séance : 1h45 à 2h.' },
+    { page: 'Infos pratiques', state: '⚠️ « coaching »', old: 'Informations pratiques du cabinet de coaching à Saint-Germain-sur-Morin', title: 'Tarifs et accès | Naturopathie à Saint-Germain-sur-Morin', desc: 'Bilan 80 €, suivi 50 €, appel découverte gratuit de 15 min. Cabinet au 6 rue de Melun à Saint-Germain-sur-Morin, ou consultation en visio.' },
+    { page: 'Témoignages', state: '⚠️ coquilles', old: 'Témoignages sur Gaïaroma , coach en bien etre et santé naturelle', title: 'Avis et témoignages | Isabelle Gayet, naturopathe (77)', desc: 'Ils ont consulté Isabelle Gayet pour la fatigue, le stress, la digestion ou le sommeil : lisez leurs témoignages et partagez le vôtre.' },
+    { page: 'Contact', state: '⚠️ sans métier ni ville', old: 'Prendre rendez-vous avec Isabelle  Gayet', title: 'Contact et rendez-vous | Naturopathe à Saint-Germain-sur-Morin', desc: 'Prenez rendez-vous avec Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin : par téléphone au 06 78 89 21 06, par formulaire ou en ligne.' },
+    { page: 'Blog', state: '⚠️ générique', old: 'Blog | Gaïaroma', title: 'Blog naturopathie : conseils santé naturelle | Gaïaroma', desc: "Alimentation, détox, fertilité, aromathérapie : les conseils pratiques d'Isabelle Gayet, naturopathe, pour prendre soin de vous au naturel." }
+  ];
+
+  var ANNUAIRES = [
+    { group: 'Priorité haute : corriger ou compléter', items: [
+      { name: 'Google Business Profile', text: 'La fiche existe mais porte encore « Ferrières-en-Brie ». Adresse, catégorie, horaires, photos, description, puis réponse à chaque avis.', tag: 'Existant — à corriger', fix: true },
+      { name: 'Medoucine', text: 'Profil actif avec 28 avis 5/5, mais localisé « Paris, à distance ». Renseigner le cabinet de Saint-Germain-sur-Morin.', tag: 'Existant — à corriger', fix: true },
+      { name: 'Liberlo', text: 'Page déjà citée sur Qui suis-je ?, mais sans lien. Ajouter le lien dans les deux sens.', tag: 'Existant — à relier' },
+      { name: 'PagesJaunes', text: 'Inscription gratuite, très bien placée dans Google sur « naturopathe + ville ». Rubrique soins hors cadre réglementé.', tag: 'Gratuit — lien fort' }
+    ]},
+    { group: 'Priorité moyenne : annuaires de praticiens', items: [
+      { name: 'Resalib', text: 'Annuaire et prise de rendez-vous en ligne pour les praticiens du bien-être. Profil avec spécialités et tarifs.', tag: 'Visibilité + rendez-vous' },
+      { name: 'Therapeutes.com', text: 'Annuaire de thérapeutes par ville et par spécialité, bien référencé sur les requêtes locales.', tag: 'Visibilité locale' },
+      { name: 'Annuaire de votre fédération', text: 'Si vous adhérez à une fédération ou un syndicat de naturopathes, demander votre fiche dans son annuaire de praticiens.', tag: 'Lien de confiance' },
+      { name: 'Annuaire des praticiens TeLiPro', text: 'Vérifier si l’organisme de formation TeLiPro référence ses praticiens certifiés, et y demander votre fiche.', tag: 'À vérifier' }
+    ]},
+    { group: 'Bonus : autorité locale et réseaux', items: [
+      { name: 'Instagram', text: 'Compte existant (@isabellegayet_naturo). Mettre le lien du site en bio et la ville dans le nom affiché.', tag: 'Existant — à optimiser' },
+      { name: 'Facebook (page pro)', text: 'Créer une page avec la même adresse et le même téléphone. Partager les articles du blog.', tag: 'Gratuit + social' },
+      { name: 'Mairie et Val d’Europe', text: 'Annuaire des professionnels de Saint-Germain-sur-Morin ou de l’intercommunalité, s’il existe. Se renseigner en mairie.', tag: 'Lien institutionnel' },
+      { name: 'Societe.com / Annuaire des entreprises', text: 'Votre fiche existe dès l’immatriculation. Vérifier que l’adresse et le site web y sont à jour.', tag: 'Vérifier les infos' }
+    ]}
+  ];
+
+  var JSON_BUSINESS = {
+    '@context': 'https://schema.org',
+    '@type': 'HealthAndBeautyBusiness',
+    'name': 'Gaïaroma',
+    'alternateName': 'Isabelle Gayet, naturopathe',
+    'description': "Cabinet de naturopathie et santé naturelle à Saint-Germain-sur-Morin (77) : bilan de vitalité, phytothérapie, aromathérapie, micronutrition, gestion du stress et TeLiPro, au cabinet ou en visio.",
+    'url': 'https://www.isabelle-gayet.fr/',
+    'telephone': '+33678892106',
+    'email': 'igayet77@gmail.com',
+    'image': 'https://www.isabelle-gayet.fr/URL-DE-VOTRE-PHOTO.jpg',
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': '6 rue de Melun',
+      'addressLocality': 'Saint-Germain-sur-Morin',
+      'postalCode': '77860',
+      'addressRegion': 'Seine-et-Marne',
+      'addressCountry': 'FR'
+    },
+    'areaServed': ['Saint-Germain-sur-Morin','Couilly-Pont-aux-Dames','Esbly','Montry','Coupvray','Chessy','Serris','Magny-le-Hongre','Crécy-la-Chapelle','Meaux'].map(function (c) { return { '@type': 'City', 'name': c }; }).concat([{ '@type': 'AdministrativeArea', 'name': 'Seine-et-Marne' }]),
+    'priceRange': '50 € – 80 €',
+    'hasOfferCatalog': {
+      '@type': 'OfferCatalog',
+      'name': 'Consultations',
+      'itemListElement': [
+        { '@type': 'Offer', 'name': 'Première consultation (bilan et programme personnalisé)', 'price': '80', 'priceCurrency': 'EUR' },
+        { '@type': 'Offer', 'name': 'Consultation de suivi', 'price': '50', 'priceCurrency': 'EUR' },
+        { '@type': 'Offer', 'name': 'Séance de TeLiPro', 'price': '50', 'priceCurrency': 'EUR' }
+      ]
+    },
+    'founder': { '@type': 'Person', 'name': 'Isabelle Gayet', 'jobTitle': 'Naturopathe' },
+    'sameAs': [
+      'https://www.instagram.com/isabellegayet_naturo/',
+      'https://www.medoucine.com/consultation/-/isabelle-gayet/4011'
+    ]
+  };
+
+  var JSON_PERSON = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    'name': 'Isabelle Gayet',
+    'jobTitle': 'Naturopathe',
+    'url': 'https://www.isabelle-gayet.fr/isabelle-gayet-a-saint-germain-sur-morin-77860',
+    'worksFor': { '@type': 'HealthAndBeautyBusiness', 'name': 'Gaïaroma', 'url': 'https://www.isabelle-gayet.fr/' },
+    'knowsAbout': ['Naturopathie','Phytothérapie','Aromathérapie','Gemmothérapie','Micronutrition','PNL','Analyse transactionnelle','TeLiPro'],
+    'sameAs': ['https://www.instagram.com/isabellegayet_naturo/']
+  };
+
+  // ---------- Helpers ----------
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  var store = {
+    get: function (k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  function copyText(text, btn) {
+    function ok() { var t = btn.textContent; btn.textContent = 'Copié ✓'; setTimeout(function () { btn.textContent = t; }, 1500); }
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); ok(); } catch (e) { btn.textContent = 'Sélectionnez puis copiez'; }
+      document.body.removeChild(ta);
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(ok, fallback); }
+      else fallback();
+    } catch (e) { fallback(); }
+  }
+
+  // ---------- Synthèse ----------
+  var axesBox = document.getElementById('axes');
+  AXES.forEach(function (a) {
+    var color = a.note <= 3 ? 'var(--red)' : a.note <= 5 ? 'var(--orange)' : 'var(--green)';
+    var row = el('div', 'axe');
+    row.appendChild(el('div', 'axe-label', a.label));
+    var track = el('div', 'axe-track');
+    var fill = el('div', 'axe-fill'); fill.style.width = (a.note * 10) + '%'; fill.style.background = color;
+    track.appendChild(fill); track.appendChild(el('span', 'axe-mark'));
+    row.appendChild(track);
+    var v = el('div', 'axe-val', a.note + '/10'); v.style.color = color;
+    row.appendChild(v);
+    axesBox.appendChild(row);
+  });
+  var avg = Math.round(AXES.reduce(function (s, a) { return s + a.note; }, 0) / AXES.length * 10);
+  document.getElementById('score-num').textContent = avg;
+  document.getElementById('ring').setAttribute('stroke-dashoffset', (326.7 * (1 - avg / 100)).toFixed(1));
+
+  // ---------- Checklist ----------
+  var KEY = 'kit-seo-gaiaroma-checks';
+  var done = store.get(KEY) || {};
+  var all = [];
+  Object.keys(TASKS).forEach(function (group) {
+    var ul = document.querySelector('.checklist[data-group="' + group + '"]');
+    TASKS[group].forEach(function (t) {
+      var li = el('li');
+      var box = el('button', 'check'); box.type = 'button'; box.id = 'chk-' + t[0];
+      box.setAttribute('role', 'checkbox'); box.setAttribute('aria-label', t[1]);
+      var txt = el('div', 'check-text');
+      var label = el('div', 'check-label', t[1]);
+      txt.appendChild(label);
+      txt.appendChild(el('div', 'check-detail', t[2]));
+      li.appendChild(box); li.appendChild(txt); ul.appendChild(li);
+      function render() { var on = !!done[t[0]]; box.setAttribute('aria-checked', on ? 'true' : 'false'); li.classList.toggle('is-done', on); }
+      box.addEventListener('click', function () { done[t[0]] = !done[t[0]]; render(); store.set(KEY, done); progress(); });
+      render(); all.push(render);
+    });
+  });
+  var total = all.length;
+  function progress() {
+    var n = Object.keys(TASKS).reduce(function (s, g) { return s + TASKS[g].filter(function (t) { return done[t[0]]; }).length; }, 0);
+    document.getElementById('progress-label').textContent = n + ' / ' + total + ' tâches complétées';
+    document.getElementById('progress-fill').style.width = (n / total * 100).toFixed(1) + '%';
+  }
+  document.getElementById('reset-btn').addEventListener('click', function () { done = {}; store.set(KEY, done); all.forEach(function (r) { r(); }); progress(); });
+  progress();
+
+  // ---------- Balises ----------
+  var ml = document.getElementById('meta-list');
+  METAS.forEach(function (m) {
+    var item = el('div', 'meta-item');
+    var top = el('div', 'meta-top');
+    var left = el('div'); left.style.minWidth = '0'; left.style.flex = '1';
+    left.appendChild(el('div', 'meta-page', 'Page ' + m.page + ' (actuel : ' + m.state + ')'));
+    left.appendChild(el('div', 'meta-old', m.old));
+    var nt = el('div', 'meta-new', m.title); nt.appendChild(el('span', 'k', m.title.length + ' car.'));
+    left.appendChild(nt);
+    top.appendChild(left);
+    var btn = el('button', 'copy-btn inline', 'Copier'); btn.type = 'button';
+    btn.setAttribute('aria-label', 'Copier le title et la meta description de la page ' + m.page);
+    btn.addEventListener('click', function () { copyText('Title : ' + m.title + '\nMeta description : ' + m.desc, btn); });
+    top.appendChild(btn);
+    item.appendChild(top);
+    var d = el('div', 'meta-desc'); d.appendChild(el('span', 'meta-label', 'Meta description'));
+    d.appendChild(document.createTextNode(m.desc)); d.appendChild(el('span', 'k', m.desc.length + ' car.'));
+    item.appendChild(d);
+    if (m.note) item.appendChild(el('div', 'meta-note', '→ ' + m.note));
+    ml.appendChild(item);
+  });
+
+  // ---------- JSON-LD ----------
+  function script(obj) { return '<script type="application/ld+json">\n' + JSON.stringify(obj, null, 2) + '\n<\/script>'; }
+  document.getElementById('jsonld-business').textContent = script(JSON_BUSINESS);
+  document.getElementById('jsonld-person').textContent = script(JSON_PERSON);
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () { copyText(document.getElementById(b.getAttribute('data-copy')).textContent, b); });
+  });
+
+  // ---------- Annuaires ----------
+  var an = document.getElementById('annuaires');
+  ANNUAIRES.forEach(function (g) {
+    an.appendChild(el('h3', null, g.group));
+    var grid = el('div', 'annuaire-grid');
+    g.items.forEach(function (a) {
+      var it = el('div', 'annuaire-item');
+      it.appendChild(el('h4', null, a.name));
+      it.appendChild(el('p', null, a.text));
+      it.appendChild(el('span', 'tag' + (a.fix ? ' fix' : ''), a.tag));
+      grid.appendChild(it);
+    });
+    an.appendChild(grid);
+  });
+
+  // ---------- Onglets ----------
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function show(id, save) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-panel') === id;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById('panel-' + t.getAttribute('data-panel')).hidden = !on;
+    });
+    if (save) store.set('kit-seo-gaiaroma-tab', id);
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(t.getAttribute('data-panel'), true); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      n.focus(); show(n.getAttribute('data-panel'), true);
+    });
+  });
+  var ids = tabs.map(function (t) { return t.getAttribute('data-panel'); });
+  var hash = (location.hash || '').replace('#', '');
+  var saved = store.get('kit-seo-gaiaroma-tab');
+  show(ids.indexOf(hash) >= 0 ? hash : (ids.indexOf(saved) >= 0 ? saved : 'synthese'), false);
+})();
+</script>
+
+</body></html>

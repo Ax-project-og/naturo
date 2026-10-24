@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+permalink: /mentions-legales.html
+title: "Mentions légales | Gaïaroma"
+description: "Mentions légales et politique de confidentialité du site de Gaïaroma, Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin."
+fil:
+  - titre: Mentions légales
+---
+<section class="page-hero">
+  <div class="container container--narrow">
+    <h1>Mentions légales</h1>
+    <p class="lead">Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), voici les informations relatives au site {{ site.url | replace("https://", "") }}.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container container--narrow legal prose">
+    <h2>1. Éditeur du site</h2>
+    <p>
+      <strong>{{ site.nom }}</strong> — {{ site.marque }}<br>
+      {{ site.statut }}<br>
+      SIRET : {{ site.siret }}<br>
+      {{ site.adresse.rue }}, {{ site.adresse.codePostal }} {{ site.adresse.ville }}<br>
+      Téléphone : <a href="{{ site.telephoneLien }}">{{ site.telephone }}</a><br>
+      Email : <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </p>
+    <p>Responsable de la publication : {{ site.nom }}.</p>
+
+    <h2>2. Hébergement</h2>
+    <p>{{ site.hebergeur.nom }}<br>{{ site.hebergeur.adresse }}<br><a href="{{ site.hebergeur.site }}" rel="noopener">{{ site.hebergeur.site | replace("https://", "") }}</a></p>
+
+    <h2>3. Activité</h2>
+    <p>La naturopathie est une pratique de santé naturelle non réglementée. Elle ne relève pas du domaine médical mais lui est complémentaire : les accompagnements proposés ne se substituent en aucun cas à une consultation médicale, ne constituent ni un diagnostic ni une prescription, et ne viennent jamais modifier un traitement en cours. Les articles du blog sont donnés à titre informatif et ne remplacent pas un avis personnalisé.</p>
+
+    <h2>4. Propriété intellectuelle</h2>
+    <p>{{ site.nom }} est propriétaire exclusif de tous les droits de propriété intellectuelle ou détient les droits d'usage sur tous les éléments accessibles sur le site, tant sur la structure que sur les textes, images, graphismes, logo et icônes. Toute reproduction, représentation, modification, publication ou adaptation totale ou partielle de l'un quelconque de ces éléments est interdite sans autorisation écrite préalable, et serait constitutive d'une contrefaçon sanctionnée par les articles L.335-2 et suivants du Code de la propriété intellectuelle.</p>
+
+    <h2>5. Responsabilité et liens</h2>
+    <p>{{ site.nom }} s'efforce de fournir des informations aussi précises et à jour que possible, mais ne saurait garantir l'exactitude, la complétude et l'actualité des informations diffusées. Le site contient des liens vers d'autres sites (Medoucine, Instagram, Google…) dont le contenu et la politique de confidentialité ne relèvent pas de sa responsabilité.</p>
+
+    <h2 id="donnees">6. Données personnelles</h2>
+    <p>Le responsable du traitement est {{ site.nom }}, joignable à l'adresse <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+    <h3>Formulaire de contact</h3>
+    <p>Les informations saisies dans le formulaire de contact (nom, prénom, email, téléphone, message) sont utilisées uniquement pour répondre à votre demande. Elles ne sont ni cédées, ni vendues, ni utilisées à des fins commerciales, et sont conservées le temps nécessaire au traitement de votre demande et au suivi de la relation.</p>
+    <h3>Prise de rendez-vous</h3>
+    <p>La prise de rendez-vous en ligne s'effectue sur la plateforme Medoucine, qui traite vos données selon sa propre politique de confidentialité.</p>
+    <h3>Cookies et mesure d'audience</h3>
+    <p>Ce site ne dépose aucun cookie publicitaire ni de mesure d'audience. Le plan d'accès est fourni par OpenStreetMap ; les polices de caractères sont hébergées sur le site lui-même.</p>
+    <h3>Vos droits</h3>
+    <p>Conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation et d'opposition au traitement de vos données. Pour l'exercer, écrivez à <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Vous pouvez également introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>).</p>
+
+    <h2>7. Droit applicable</h2>
+    <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, le tribunal compétent est celui de {{ site.tribunal }}.</p>
+  </div>
+</section>

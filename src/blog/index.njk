@@ -1,0 +1,37 @@
+---
+layout: layouts/base.njk
+permalink: /blog.html
+title: "Blog naturopathie : conseils santé naturelle | Gaïaroma"
+description: "Alimentation, détox, fertilité, aromathérapie : les conseils pratiques d'Isabelle Gayet, naturopathe, pour prendre soin de vous au naturel."
+fil:
+  - titre: Blog
+---
+{%- from "icons.njk" import icon -%}
+
+<section class="page-hero">
+  <div class="container page-hero__grid">
+    <div>
+      <span class="eyebrow">Le blog</span>
+      <h1>Conseils en <em>santé naturelle</em></h1>
+      <p class="lead">Alimentation, détox, fertilité, aromathérapie : des conseils pratiques pour prendre soin de vous au naturel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand" style="padding-top:48px">
+  <div class="container">
+    <div class="filters" role="group" aria-label="Filtrer par catégorie">
+      <button type="button" data-filter="tous" aria-pressed="true">Tous les articles</button>
+      {%- for c in categories %}
+      <button type="button" data-filter="{{ c.slug }}" aria-pressed="false">{{ c.nom }}</button>
+      {%- endfor %}
+    </div>
+    <div class="posts">
+      {%- for post in collections.articles %}
+      {% include "partials/post-card.njk" %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta.njk" %}

@@ -1,0 +1,217 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+title: "Naturopathe à Saint-Germain-sur-Morin (77) | Isabelle Gayet"
+description: "Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin : bilan de vitalité, phytothérapie, gestion du stress et des émotions, TeLiPro, au cabinet ou en visio."
+bodyClass: page-accueil
+---
+{%- from "icons.njk" import icon -%}
+
+<section class="hero">
+  <div class="container hero__grid">
+    <div>
+      <h1>
+        <span class="hero__kicker">Isabelle Gayet · Naturopathe à Saint-Germain-sur-Morin</span>
+        Bien dans votre peau, <em>bien dans votre tête</em>
+      </h1>
+      <p class="lead">Vous voulez être enfin bien dans votre peau et bien dans votre tête, prendre soin de vous au naturel pour retrouver une vitalité au top, une qualité de vie meilleure et un équilibre global. Ça vous tente comme projet ?</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="{{ site.rdv }}" target="_blank" rel="noopener">{{ icon("calendar") }} Prendre rendez-vous</a>
+        <a class="btn btn--ghost" href="/la-seance-de-naturopathie">Comment se passe une consultation</a>
+      </div>
+      <ul class="trust">
+        <li>{{ icon("home") }} Au cabinet ou en visio</li>
+        <li>{{ icon("phone") }} Rdv téléphonique de 15 mn gratuit</li>
+        <li>{{ icon("chat") }} Réponse sous 24h entre les rdv</li>
+      </ul>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <svg class="hero__rays" viewBox="0 0 200 200">
+        {%- for i in range(0, 36) %}
+        <line x1="100" y1="6" x2="100" y2="{{ 16 if i % 2 else 22 }}" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" transform="rotate({{ i * 10 }} 100 100)"/>
+        {%- endfor %}
+      </svg>
+      <div class="hero__sun">
+        <picture>
+          <source srcset="/assets/img/logo-gaiaroma.webp" type="image/webp">
+          <img src="/assets/img/logo-gaiaroma.png" alt="" width="520" height="641">
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--teal section--tight">
+  <div class="container quote reveal">
+    {{ icon("quote") }}
+    <blockquote>
+      <p>L'homme doit harmoniser l'esprit et le corps</p>
+      <cite>Hippocrate</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Mon accompagnement</span>
+      <h2>Le corps et l'esprit, <em>ensemble</em></h2>
+      <p>Pour un.e praticien.ne en santé naturelle, l'adage « un esprit sain dans un corps sain » prend tout son sens grâce à un accompagnement global.</p>
+    </div>
+    <div class="grid grid--3">
+      <a class="card card--link card--feature card--peau reveal" href="/bien-dans-votre-peau">
+        <div class="card__icon card__icon--leaf">{{ icon("leaf") }}</div>
+        <span class="card__tag">Le corps</span>
+        <h3>Bien dans votre peau</h3>
+        <p>Un accompagnement holistique sur mesure pour gérer les troubles fonctionnels et retrouver une vitalité optimale, avec les ressources naturelles de la phytothérapie, aromathérapie, gemmothérapie, micronutrition, nutrition, hygiène de vie.</p>
+        <span class="link-arrow">Découvrir {{ icon("arrow") }}</span>
+      </a>
+      <a class="card card--link card--feature card--tete reveal" href="/bien-dans-votre-tete">
+        <div class="card__icon">{{ icon("heart") }}</div>
+        <span class="card__tag">Les émotions</span>
+        <h3>Bien dans votre tête</h3>
+        <p>Un accompagnement bienveillant pour vous aider dans la gestion de vos émotions, avec les ressources concrètes et rapidement efficaces des thérapies brèves, de la psychogénéalogie et du développement personnel.</p>
+        <span class="link-arrow">Découvrir {{ icon("arrow") }}</span>
+      </a>
+      <a class="card card--link card--feature card--telipro reveal" href="/telipro-technique-de-liberation-profonde">
+        <div class="card__icon card__icon--sun">{{ icon("spark") }}</div>
+        <span class="card__tag">Le starter</span>
+        <h3>TeLiPro</h3>
+        <p>Une technique de libération profonde des empreintes émotionnelles négatives, qui va aider à vous donner l'impulsion de départ et neutraliser les ancrages négatifs qui vous bloquent.</p>
+        <span class="link-arrow">Découvrir {{ icon("arrow") }}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Ma façon de travailler</span>
+      <h2>Je vous accompagne à chaque étape</h2>
+    </div>
+    <div class="grid grid--3">
+      <article class="card reveal">
+        <div class="card__icon">{{ icon("user") }}</div>
+        <h3>Les consultations</h3>
+        <p><strong>C'est votre moment, vous êtes au centre de mon attention</strong>, je vous écoute, je réponds à vos questions, je vous en pose, je vous explique. J'ai à cœur que vous repartiez avec des débuts de réponses à vos préoccupations et avec la motivation nécessaire pour suivre le programme que je vais élaborer sur mesure pour vous.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__icon card__icon--sun">{{ icon("book") }}</div>
+        <h3>La pédagogie</h3>
+        <p>Persuadée qu'une des clefs du succès est dans la connaissance (le fameux « comment ça marche »), je vous explique les techniques utilisées, les compléments de phytothérapie ou de micronutrition proposés, les phénomènes métaboliques, les diverses causes possibles à vos soucis, les solutions possibles.</p>
+      </article>
+      <article class="card reveal">
+        <div class="card__icon card__icon--leaf">{{ icon("chat") }}</div>
+        <h3>Le coaching sur mesure</h3>
+        <p>Votre programme est totalement individualisé. Vous avez des questions, des interrogations, des incompréhensions ? <strong>Je vous réponds par mail ou WhatsApp dans les 24h. Je ne vous laisse jamais sans réponse.</strong> Je prends aussi régulièrement de vos nouvelles entre les rendez-vous de suivi.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="portrait reveal">
+      <div class="portrait__frame">
+        <picture>
+          <source srcset="/assets/img/isabelle-gayet.webp" type="image/webp">
+          <img src="/assets/img/isabelle-gayet.jpg" alt="Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin" width="360" height="480" loading="lazy">
+        </picture>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Qui suis-je ?</span>
+      <h2>Isabelle Gayet, <em>praticienne en santé naturelle</em></h2>
+      <p class="lead">Je vous accompagne dans votre désir de mieux-être dans votre corps et dans votre tête.</p>
+      <p>Le corps ne peut aller bien sans que la sphère mentale ne soit équilibrée et inversement, l'esprit ne peut s'épanouir et les émotions s'exprimer avec justesse et équilibre si le corps n'est pas en bonne condition.</p>
+      <p>Je vous propose de vous aider à retrouver vitalité physique et bien-être psychique, à revenir à l'équilibre nécessaire à votre épanouissement et votre libération personnelle.</p>
+      <p class="note"><strong>Ma pratique ne relève pas du domaine médical, mais lui est complémentaire.</strong></p>
+      <a class="link-arrow" href="/isabelle-gayet-a-saint-germain-sur-morin-77860">Mon parcours et mes certifications {{ icon("arrow") }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sky">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">La consultation</span>
+      <h2>Comment ça se passe ?</h2>
+      <p>La plupart des problématiques nécessitent un bilan et 1 à 3 consultations de suivi.</p>
+    </div>
+    <ol class="steps steps--row">
+      <li class="step reveal">
+        <span class="step__meta">{{ icon("clock", "icon icon--sm") }} 1h45 à 2h</span>
+        <h3>Le bilan de vitalité</h3>
+        <p>Nous échangeons sur vos 5 plans d'existence (physique, énergétique, environnemental, émotionnel et mental) et définissons ensemble un objectif réaliste et réalisable.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__meta">{{ icon("mail", "icon icon--sm") }} Sous 3 à 4 jours</span>
+        <h3>Votre programme</h3>
+        <p>Un protocole avec des conseils ciblés et des préconisations relatives à votre problématique, adapté à vos goûts, vos habitudes et vos contraintes de vie.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__meta">{{ icon("calendar", "icon icon--sm") }} Environ 4 semaines après</span>
+        <h3>Le suivi</h3>
+        <p>Les consultations de suivi sont très importantes pour parvenir avec succès à votre objectif : je recueille votre feedback et j'établis la suite de votre programme.</p>
+      </li>
+    </ol>
+    <div class="center-row mt-lg">
+      <a class="btn btn--ghost" href="/la-seance-de-naturopathie">Tout savoir sur la consultation</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Témoignages</span>
+      <h2>Ils m'ont fait confiance</h2>
+    </div>
+    <div class="testimonial-strip">
+      {%- for t in temoignages %}{% if t.accueil %}
+      {% include "partials/temoignage.njk" %}
+      {%- endif %}{% endfor %}
+    </div>
+    <div class="review-links">
+      <a class="btn btn--ghost btn--sm" href="/temoignages-gaiaroma">Lire tous les témoignages</a>
+      <a class="btn btn--ghost btn--sm" href="{{ site.medoucine }}" target="_blank" rel="noopener">Les avis sur Medoucine {{ icon("external", "icon icon--sm") }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Tarifs</span>
+      <h2>Des consultations claires, <em>sans surprise</em></h2>
+    </div>
+    {% include "partials/tarifs.njk" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split split--top">
+    <div class="reveal">
+      <span class="eyebrow">Le cabinet</span>
+      <h2>Votre cabinet de santé naturelle à Saint-Germain-sur-Morin</h2>
+      <p>J'accueille enfants, adolescents, adultes et seniors en visio ou au cabinet (à votre domicile dans un périmètre de 15 km maximum sur demande).</p>
+      <div class="modes">
+        <div class="mode">{{ icon("home") }}<div><strong>Au cabinet</strong><span>{{ site.adresse.ville }}</span></div></div>
+        <div class="mode">{{ icon("video") }}<div><strong>En visio</strong><span>Depuis où vous vous trouvez</span></div></div>
+        <div class="mode">{{ icon("pin") }}<div><strong>À domicile</strong><span>Jusqu'à 15 km, sur demande</span></div></div>
+      </div>
+      <ul class="info-list">
+        <li><span class="icon-wrap">{{ icon("pin") }}</span><div><strong>{{ site.marque }}</strong>{{ site.adresse.rue }}, {{ site.adresse.codePostal }} {{ site.adresse.ville }}<br><a href="{{ site.itineraire }}" target="_blank" rel="noopener">Calculer mon itinéraire</a></div></li>
+        <li><span class="icon-wrap">{{ icon("phone") }}</span><div><strong>Téléphone</strong><a href="{{ site.telephoneLien }}">{{ site.telephone }}</a></div></li>
+      </ul>
+      <p class="muted">Le cabinet accueille les habitants de Seine-et-Marne et d'ailleurs, notamment de {{ site.villes.slice(0, 8) | join(", ") }}…</p>
+    </div>
+    <div class="reveal">
+      {% include "partials/carte.njk" %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta.njk" %}

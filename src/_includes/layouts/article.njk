@@ -1,0 +1,77 @@
+---
+layout: layouts/base.njk
+---
+{%- from "icons.njk" import icon -%}
+{%- set cat = categories | findBy("slug", categorie) -%}
+
+<article>
+  <header class="article-header">
+    <div class="container container--narrow">
+      <div class="post-meta">
+        <a class="chip chip--sky" href="/blog/categories/{{ cat.slug }}">{{ cat.nom }}</a>
+        <time datetime="{{ page.date | dateIso }}">{{ page.date | dateFr }}</time>
+        <span>· {{ content | readingTime }} min de lecture</span>
+      </div>
+      <h1 class="mt-lg" style="margin-top:20px">{{ title }}</h1>
+      <p class="lead muted">{{ chapo }}</p>
+      <p class="muted" style="font-size:.95rem">Par <a href="/isabelle-gayet-a-saint-germain-sur-morin-77860">{{ site.nom }}</a>, naturopathe</p>
+    </div>
+  </header>
+
+  <div class="container container--narrow">
+    <div class="cover cover--{{ cat.slug }} article-cover" aria-hidden="true">
+      {% include "partials/cover-motif.njk" %}
+      <span class="cover__icon">{{ icon(cat.icone) }}</span>
+    </div>
+
+    <div class="article-body prose">
+      {{ content | safe }}
+    </div>
+
+    <aside class="author">
+      <picture>
+        <source srcset="/assets/img/isabelle-gayet.webp" type="image/webp">
+        <img src="/assets/img/isabelle-gayet.jpg" alt="Isabelle Gayet" width="360" height="480" loading="lazy">
+      </picture>
+      <div>
+        <p class="author__name">{{ site.nom }}</p>
+        <p>Naturopathe, praticienne PNL et TeLiPro, certifiée en phytothérapie, aromathérapie et gemmothérapie. Je consulte au cabinet de {{ site.adresse.ville }} et en visio.</p>
+        <a class="link-arrow" href="/isabelle-gayet-a-saint-germain-sur-morin-77860">Mon parcours {{ icon("arrow") }}</a>
+      </div>
+    </aside>
+
+    <p class="note mt-lg"><strong>Ces conseils sont généraux.</strong> Chaque personne est unique : pour un accompagnement adapté à votre situation, en complément de votre suivi médical, <a href="/la-seance-de-naturopathie">découvrez la consultation</a>.</p>
+
+    {%- if commentaires %}
+    <section class="comments" aria-labelledby="titre-commentaires">
+      <h2 id="titre-commentaires" style="font-size:1.5rem">{{ commentaires.length }} commentaires</h2>
+      {%- for c in commentaires %}
+      <div class="comment">
+        <p class="comment__meta"><strong>{{ c.nom }}</strong> · {{ c.date }}</p>
+        <p>{{ c.texte }}</p>
+      </div>
+      {%- endfor %}
+    </section>
+    {%- endif %}
+  </div>
+</article>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">À lire aussi</span>
+      <h2>D'autres articles</h2>
+    </div>
+    <div class="posts">
+      {%- set autres = 0 %}
+      {%- for post in collections.articles %}
+      {%- if post.url != page.url and autres < 3 %}
+      {%- set autres = autres + 1 %}
+      {% include "partials/post-card.njk" %}
+      {%- endif %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta.njk" %}

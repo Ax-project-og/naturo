@@ -1,0 +1,9 @@
+{%- from "icons.njk" import icon -%}
+{%- set d = 0.012 -%}
+<div class="map">
+  <div class="map__placeholder" aria-hidden="true">{{ icon("pin") }}<p>{{ site.adresse.rue }}, {{ site.adresse.codePostal }} {{ site.adresse.ville }}</p></div>
+  <iframe
+    title="Plan d'accès au cabinet Gaïaroma, {{ site.adresse.rue }} à {{ site.adresse.ville }}"
+    src="https://www.openstreetmap.org/export/embed.html?bbox={{ site.adresse.lon - d }}%2C{{ site.adresse.lat - d * 0.6 }}%2C{{ site.adresse.lon + d }}%2C{{ site.adresse.lat + d * 0.6 }}&amp;layer=mapnik&amp;marker={{ site.adresse.lat }}%2C{{ site.adresse.lon }}"
+    loading="lazy" style="position:relative"></iframe>
+</div>

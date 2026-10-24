@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+permalink: /informations-pratiques-cabinet-de-coaching.html
+title: "Tarifs et accès | Naturopathie à Saint-Germain-sur-Morin"
+description: "Bilan 80 €, suivi 50 €, appel découverte gratuit de 15 min. Cabinet au 6 rue de Melun à Saint-Germain-sur-Morin, ou consultation en visio."
+fil:
+  - titre: Tarifs & infos pratiques
+---
+{%- from "icons.njk" import icon -%}
+
+<section class="page-hero">
+  <div class="container page-hero__grid">
+    <div>
+      <span class="eyebrow">Infos pratiques</span>
+      <h1>Tarifs et infos pratiques du cabinet <em>de santé naturelle</em></h1>
+      <p class="lead">Rendez-vous au cabinet à Saint-Germain-sur-Morin ou en visio. Remboursement possible selon la mutuelle et rdv téléphonique de 15 mn informatif gratuit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Tarifs</span>
+      <h2>Les consultations</h2>
+    </div>
+    {% include "partials/tarifs.njk" %}
+    <p class="text-center muted mt-lg">Les forfaits coaching offrent des tarifs avantageux sur les suivis : <a href="/prendre-rendez-vous-naturopathe">contactez-moi</a> pour en savoir plus.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid grid--2">
+    <div class="card reveal">
+      <div class="card__icon card__icon--leaf">{{ icon("euro") }}</div>
+      <h2 style="font-size:1.6rem">Remboursement</h2>
+      <p>Les consultations et coaching en santé naturelle sont des soins qui ne sont pas soumis à remboursement par la sécurité sociale (profession non réglementée), mais je vous conseille de regarder les garanties de votre mutuelle. Elles sont de plus en plus nombreuses à proposer des forfaits annuels de remboursement pour les médecines complémentaires et les soins non conventionnels.</p>
+      <p><strong>Je vous fournirai à chaque consultation une facture détaillée.</strong></p>
+    </div>
+    <div class="card reveal">
+      <div class="card__icon">{{ icon("user") }}</div>
+      <h2 style="font-size:1.6rem">Pour qui, et où ?</h2>
+      <p>J'accueille enfants, adolescents, adultes et seniors en visio ou au cabinet (à votre domicile dans un périmètre de 15 km maximum sur demande).</p>
+      <ul class="checklist">
+        <li>RDV au cabinet ou en visio (Google Meet)</li>
+        <li>Rdv téléphonique de 15 mn informatif gratuit (me contacter)</li>
+        <li>Pensez à prendre rendez-vous avant de vous déplacer</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sky" id="acces">
+  <div class="container split split--top">
+    <div class="reveal">
+      <span class="eyebrow">Le cabinet</span>
+      <h2>Accéder au cabinet</h2>
+      <ul class="info-list">
+        <li><span class="icon-wrap">{{ icon("pin") }}</span><div><strong>{{ site.marque }} — {{ site.nom }}</strong>{{ site.adresse.rue }}<br>{{ site.adresse.codePostal }} {{ site.adresse.ville }}<br><a href="{{ site.itineraire }}" target="_blank" rel="noopener">Calculer mon itinéraire</a></div></li>
+        <li><span class="icon-wrap">{{ icon("phone") }}</span><div><strong>Téléphone</strong><a href="{{ site.telephoneLien }}">{{ site.telephone }}</a></div></li>
+        <li><span class="icon-wrap">{{ icon("video") }}</span><div><strong>Également en visio</strong>Google Meet, depuis où vous vous trouvez</div></li>
+        <li><span class="icon-wrap">{{ icon("clock") }}</span><div><strong>Horaires</strong>Sur rendez-vous uniquement</div></li>
+        <li><span class="icon-wrap">{{ icon("home") }}</span><div><strong>Transports</strong>Gare la plus proche : {{ site.gare }}</div></li>
+      </ul>
+      <h3>Le cabinet est proche des villes suivantes</h3>
+      <ul class="cities">
+        {%- for v in site.villes %}<li>{{ v }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="reveal">
+      {% include "partials/carte.njk" %}
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta.njk" %}

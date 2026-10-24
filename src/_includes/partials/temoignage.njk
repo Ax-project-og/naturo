@@ -1,0 +1,9 @@
+{%- from "icons.njk" import icon -%}
+<figure class="testimonial reveal">
+  <div class="stars" aria-label="5 étoiles sur 5">{% for i in range(5) %}{{ icon("star") }}{% endfor %}</div>
+  <blockquote><p>{{ t.texte }}</p></blockquote>
+  <figcaption>
+    <span class="testimonial__avatar" aria-hidden="true">{{ t.nom | initiale }}</span>
+    <span><span class="testimonial__name">{{ t.nom }}</span><span class="testimonial__theme">{{ t.theme }}</span></span>
+  </figcaption>
+</figure>

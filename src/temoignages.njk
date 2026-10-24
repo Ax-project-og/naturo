@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+permalink: /temoignages-gaiaroma.html
+title: "Avis et témoignages | Isabelle Gayet, naturopathe (77)"
+description: "Ils ont consulté Isabelle Gayet pour la fatigue, le stress, la digestion ou le sommeil : lisez leurs témoignages et partagez le vôtre."
+fil:
+  - titre: Témoignages
+---
+{%- from "icons.njk" import icon -%}
+
+<section class="page-hero">
+  <div class="container page-hero__grid">
+    <div>
+      <span class="eyebrow">Témoignages</span>
+      <h1>Témoignages sur Isabelle Gayet, <em>praticienne en santé naturelle</em> à Saint-Germain-sur-Morin</h1>
+      <p class="lead">Fatigue, digestion, sommeil, articulations, hyperactivité… Ils partagent leur expérience de l'accompagnement.</p>
+      <div class="btn-row">
+        <a class="btn btn--ghost btn--sm" href="{{ site.medoucine }}" target="_blank" rel="noopener">Découvrir les avis Medoucine {{ icon("external", "icon icon--sm") }}</a>
+        <a class="btn btn--ghost btn--sm" href="{{ site.google }}" target="_blank" rel="noopener">Découvrir les avis Google {{ icon("external", "icon icon--sm") }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand">
+  <div class="container">
+    <div class="testimonials">
+      {%- for t in temoignages %}
+      {% include "partials/temoignage.njk" %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow text-center">
+    <span class="eyebrow">Partagez votre témoignage</span>
+    <h2>Vous avez été accompagné.e ?</h2>
+    <p class="lead">Votre avis aide d'autres personnes à franchir le pas. Merci de prendre quelques minutes pour le partager !</p>
+    <div class="review-links">
+      <a class="btn btn--primary" href="{{ site.google }}" target="_blank" rel="noopener">{{ icon("star") }} Laisser un avis Google</a>
+      <a class="btn btn--ghost" href="{{ site.medoucine }}" target="_blank" rel="noopener">Laisser un avis sur Medoucine</a>
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta.njk" %}

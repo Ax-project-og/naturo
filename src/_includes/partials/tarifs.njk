@@ -1,0 +1,20 @@
+{%- from "icons.njk" import icon -%}
+<div class="prices">
+  {%- for t in site.tarifs %}
+  <article class="price{% if t.vedette %} price--featured{% endif %} reveal">
+    {%- if t.vedette %}<span class="price__badge">Pour commencer</span>{% endif %}
+    <h3>{{ t.nom }}</h3>
+    <p class="price__sub">{{ t.sousTitre }}</p>
+    <p class="price__amount">{{ t.prix }}<small> €</small></p>
+    <p class="price__time">{{ icon("clock", "icon icon--sm") }} {{ t.duree }}</p>
+    <ul class="checklist">
+      {%- for d in t.details %}<li>{{ d }}</li>{% endfor %}
+    </ul>
+  </article>
+  {%- endfor %}
+</div>
+<p class="price-note">
+  <span>{{ icon("phone") }} Prise de contact avec rdv téléphonique gratuit de 15 mn</span>
+  <span>{{ icon("euro") }} Remboursement possible selon la mutuelle</span>
+  <span>{{ icon("check") }} Forfaits avec tarifs dégressifs</span>
+</p>

@@ -1,0 +1,40 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: categories
+  size: 1
+  alias: cat
+permalink: "/blog/categories/{{ cat.slug }}.html"
+noindex: true
+eleventyComputed:
+  title: "{{ cat.nom }} | Blog Gaïaroma"
+  description: "Les articles de la catégorie {{ cat.nom }} du blog d'Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin."
+  fil:
+    - titre: Blog
+      url: /blog
+    - titre: "{{ cat.nom }}"
+---
+{%- from "icons.njk" import icon -%}
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Catégorie</span>
+    <h1>{{ cat.nom }}</h1>
+  </div>
+</section>
+
+<section class="section section--sand" style="padding-top:48px">
+  <div class="container">
+    <ul class="filters">
+      <li><a href="/blog">Tous les articles</a></li>
+      {%- for c in categories %}
+      <li><a href="/blog/categories/{{ c.slug }}"{% if c.slug == cat.slug %} aria-current="page"{% endif %}>{{ c.nom }}</a></li>
+      {%- endfor %}
+    </ul>
+    <div class="posts">
+      {%- for post in collections.articles | filterBy("categorie", cat.slug) %}
+      {% include "partials/post-card.njk" %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
