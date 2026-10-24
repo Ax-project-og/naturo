@@ -1,6 +1,8 @@
 // Informations centrales du cabinet : à modifier ici, elles se répercutent sur tout le site.
 export default {
   url: "https://www.isabelle-gayet.fr",
+  // Version de démonstration (GitHub Pages) : jamais indexée par les moteurs
+  demo: process.env.SITE_ENV === "demo",
   marque: "Gaïaroma",
   nom: "Isabelle Gayet",
   metier: "Naturopathe",

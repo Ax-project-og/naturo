@@ -9,7 +9,7 @@
   <title>{{ seoTitle or title }}</title>
   <meta name="description" content="{{ description }}">
   <link rel="canonical" href="{{ canonical }}">
-  {%- if noindex %}
+  {%- if noindex or site.demo %}
   <meta name="robots" content="noindex, follow">
   {%- endif %}
   <meta name="theme-color" content="#256777">

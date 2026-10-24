@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 permalink: /index.html
 title: "Naturopathe à Saint-Germain-sur-Morin (77) | Isabelle Gayet"
-description: "Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin : bilan de vitalité, phytothérapie, gestion du stress et des émotions, TeLiPro, au cabinet ou en visio."
+description: "Isabelle Gayet, naturopathe à Saint-Germain-sur-Morin : bilan de vitalité, phytothérapie, gestion du stress et des émotions, TeLiPro, en visio et prochainement au cabinet."
 bodyClass: page-accueil
 ---
 {%- from "icons.njk" import icon -%}
@@ -11,7 +11,7 @@ bodyClass: page-accueil
   <div class="container hero__grid">
     <div>
       <h1>
-        <span class="hero__kicker">Isabelle Gayet · Naturopathe à Saint-Germain-sur-Morin</span>
+        <span class="hero__kicker">Isabelle Gayet · <span class="hero__metier">Naturopathe</span> à Saint-Germain-sur-Morin</span>
         Bien dans votre peau, <em>bien dans votre tête</em>
       </h1>
       <p class="lead">Vous voulez être enfin bien dans votre peau et bien dans votre tête, prendre soin de vous au naturel pour retrouver une vitalité au top, une qualité de vie meilleure et un équilibre global. Ça vous tente comme projet ?</p>
@@ -20,7 +20,7 @@ bodyClass: page-accueil
         <a class="btn btn--ghost" href="/la-seance-de-naturopathie">Comment se passe une consultation</a>
       </div>
       <ul class="trust">
-        <li>{{ icon("home") }} Au cabinet ou en visio</li>
+        <li>{{ icon("video") }} En visio, et prochainement au cabinet</li>
         <li>{{ icon("phone") }} Rdv téléphonique de 15 mn gratuit</li>
         <li>{{ icon("chat") }} Réponse sous 24h entre les rdv</li>
       </ul>
@@ -85,28 +85,35 @@ bodyClass: page-accueil
   </div>
 </section>
 
-<section class="section section--sand">
+<section class="section section--sky">
   <div class="container">
     <div class="section-head section-head--center">
       <span class="eyebrow">Ma façon de travailler</span>
-      <h2>Je vous accompagne à chaque étape</h2>
+      <h2>Je vous accompagne <em>à chaque étape</em></h2>
+      <p>La plupart des problématiques nécessitent un bilan et 1 à 3 consultations de suivi.</p>
     </div>
-    <div class="grid grid--3">
-      <article class="card reveal">
-        <div class="card__icon">{{ icon("user") }}</div>
-        <h3>Les consultations</h3>
-        <p><strong>C'est votre moment, vous êtes au centre de mon attention</strong>, je vous écoute, je réponds à vos questions, je vous en pose, je vous explique. J'ai à cœur que vous repartiez avec des débuts de réponses à vos préoccupations et avec la motivation nécessaire pour suivre le programme que je vais élaborer sur mesure pour vous.</p>
-      </article>
-      <article class="card reveal">
-        <div class="card__icon card__icon--sun">{{ icon("book") }}</div>
-        <h3>La pédagogie</h3>
-        <p>Persuadée qu'une des clefs du succès est dans la connaissance (le fameux « comment ça marche »), je vous explique les techniques utilisées, les compléments de phytothérapie ou de micronutrition proposés, les phénomènes métaboliques, les diverses causes possibles à vos soucis, les solutions possibles.</p>
-      </article>
-      <article class="card reveal">
-        <div class="card__icon card__icon--leaf">{{ icon("chat") }}</div>
-        <h3>Le coaching sur mesure</h3>
-        <p>Votre programme est totalement individualisé. Vous avez des questions, des interrogations, des incompréhensions ? <strong>Je vous réponds par mail ou WhatsApp dans les 24h. Je ne vous laisse jamais sans réponse.</strong> Je prends aussi régulièrement de vos nouvelles entre les rendez-vous de suivi.</p>
-      </article>
+    <ol class="journey">
+      <li class="journey__step reveal">
+        <span class="journey__icon">{{ icon("user") }}</span>
+        <span class="journey__meta">1h45 à 2h</span>
+        <h3>Le bilan de vitalité</h3>
+        <p><strong>C'est votre moment, vous êtes au centre de mon attention</strong> : je vous écoute, je réponds à vos questions, je vous en pose, je vous explique. Nous abordons vos 5 plans d'existence et définissons ensemble un objectif réaliste et réalisable.</p>
+      </li>
+      <li class="journey__step reveal">
+        <span class="journey__icon">{{ icon("book") }}</span>
+        <span class="journey__meta">Sous 3 à 4 jours</span>
+        <h3>Votre programme</h3>
+        <p>Totalement individualisé, pensé rien que pour vous. Je m'adapte à vos besoins, à vos goûts, à vos habitudes, à vos contraintes de vie, et je vous explique le fameux « comment ça marche ».</p>
+      </li>
+      <li class="journey__step reveal">
+        <span class="journey__icon">{{ icon("chat") }}</span>
+        <span class="journey__meta">Environ 4 semaines après</span>
+        <h3>Le suivi et le coaching</h3>
+        <p>Les consultations de suivi ajustent votre programme. Et entre les rendez-vous, <strong>je vous réponds par mail ou WhatsApp dans les 24h. Je ne vous laisse jamais sans réponse.</strong></p>
+      </li>
+    </ol>
+    <div class="center-row mt-lg">
+      <a class="btn btn--ghost" href="/la-seance-de-naturopathie">Tout savoir sur la consultation</a>
     </div>
   </div>
 </section>
@@ -133,37 +140,7 @@ bodyClass: page-accueil
   </div>
 </section>
 
-<section class="section section--sky">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">La consultation</span>
-      <h2>Comment ça se passe ?</h2>
-      <p>La plupart des problématiques nécessitent un bilan et 1 à 3 consultations de suivi.</p>
-    </div>
-    <ol class="steps steps--row">
-      <li class="step reveal">
-        <span class="step__meta">{{ icon("clock", "icon icon--sm") }} 1h45 à 2h</span>
-        <h3>Le bilan de vitalité</h3>
-        <p>Nous échangeons sur vos 5 plans d'existence (physique, énergétique, environnemental, émotionnel et mental) et définissons ensemble un objectif réaliste et réalisable.</p>
-      </li>
-      <li class="step reveal">
-        <span class="step__meta">{{ icon("mail", "icon icon--sm") }} Sous 3 à 4 jours</span>
-        <h3>Votre programme</h3>
-        <p>Un protocole avec des conseils ciblés et des préconisations relatives à votre problématique, adapté à vos goûts, vos habitudes et vos contraintes de vie.</p>
-      </li>
-      <li class="step reveal">
-        <span class="step__meta">{{ icon("calendar", "icon icon--sm") }} Environ 4 semaines après</span>
-        <h3>Le suivi</h3>
-        <p>Les consultations de suivi sont très importantes pour parvenir avec succès à votre objectif : je recueille votre feedback et j'établis la suite de votre programme.</p>
-      </li>
-    </ol>
-    <div class="center-row mt-lg">
-      <a class="btn btn--ghost" href="/la-seance-de-naturopathie">Tout savoir sur la consultation</a>
-    </div>
-  </div>
-</section>
-
-<section class="section">
+<section class="section section--sand">
   <div class="container">
     <div class="section-head section-head--center">
       <span class="eyebrow">Témoignages</span>
@@ -181,32 +158,21 @@ bodyClass: page-accueil
   </div>
 </section>
 
-<section class="section section--sand">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">Tarifs</span>
-      <h2>Des consultations claires, <em>sans surprise</em></h2>
-    </div>
-    {% include "partials/tarifs.njk" %}
-  </div>
-</section>
-
 <section class="section">
   <div class="container split split--top">
     <div class="reveal">
-      <span class="eyebrow">Le cabinet</span>
-      <h2>Votre cabinet de santé naturelle à Saint-Germain-sur-Morin</h2>
-      <p>J'accueille enfants, adolescents, adultes et seniors en visio ou au cabinet (à votre domicile dans un périmètre de 15 km maximum sur demande).</p>
+      <span class="eyebrow">Où consulter ?</span>
+      <h2>En visio, <em>et bientôt au cabinet</em></h2>
+      <p>J'accueille enfants, adolescents, adultes et seniors en visio, depuis où vous vous trouvez. Mon cabinet de santé naturelle ouvre prochainement à Saint-Germain-sur-Morin.</p>
       <div class="modes">
-        <div class="mode">{{ icon("home") }}<div><strong>Au cabinet</strong><span>{{ site.adresse.ville }}</span></div></div>
-        <div class="mode">{{ icon("video") }}<div><strong>En visio</strong><span>Depuis où vous vous trouvez</span></div></div>
-        <div class="mode">{{ icon("pin") }}<div><strong>À domicile</strong><span>Jusqu'à 15 km, sur demande</span></div></div>
+        <div class="mode">{{ icon("video") }}<div><strong>En visio</strong><span>Dès maintenant, depuis où vous vous trouvez</span></div></div>
+        <div class="mode mode--soon">{{ icon("home") }}<div><strong>Au cabinet <span class="badge">Prochainement</span></strong><span>{{ site.adresse.rue }}, {{ site.adresse.ville }}</span></div></div>
       </div>
       <ul class="info-list">
-        <li><span class="icon-wrap">{{ icon("pin") }}</span><div><strong>{{ site.marque }}</strong>{{ site.adresse.rue }}, {{ site.adresse.codePostal }} {{ site.adresse.ville }}<br><a href="{{ site.itineraire }}" target="_blank" rel="noopener">Calculer mon itinéraire</a></div></li>
         <li><span class="icon-wrap">{{ icon("phone") }}</span><div><strong>Téléphone</strong><a href="{{ site.telephoneLien }}">{{ site.telephone }}</a></div></li>
+        <li><span class="icon-wrap">{{ icon("mail") }}</span><div><strong>Email</strong><a href="mailto:{{ site.email }}">{{ site.email }}</a></div></li>
       </ul>
-      <p class="muted">Le cabinet accueille les habitants de Seine-et-Marne et d'ailleurs, notamment de {{ site.villes.slice(0, 8) | join(", ") }}…</p>
+      <p class="muted">Le cabinet accueillera les habitants de Seine-et-Marne et d'ailleurs, notamment de {{ site.villes.slice(0, 8) | join(", ") }}…</p>
     </div>
     <div class="reveal">
       {% include "partials/carte.njk" %}
@@ -214,4 +180,5 @@ bodyClass: page-accueil
   </div>
 </section>
 
+{% set ctaTexte = "Réservez votre consultation en visio, ou demandez un rendez-vous téléphonique de 15 mn, informatif et gratuit." %}
 {% include "partials/cta.njk" %}

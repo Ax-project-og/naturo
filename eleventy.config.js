@@ -1,6 +1,9 @@
+import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import { schemaGraph } from "./lib/schema.js";
 
 export default function (eleventyConfig) {
+  // Préfixe les URL absolues quand le site est servi dans un sous-dossier (ex. GitHub Pages : /naturo/)
+  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   eleventyConfig.addFilter("schemaGraph", schemaGraph);
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
@@ -53,6 +56,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("filterBy", (items, key, value) => items.filter((i) => i.data[key] === value));
 
   return {
+    pathPrefix: process.env.PATH_PREFIX || "/",
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
     templateFormats: ["njk", "md", "html"],
     markdownTemplateEngine: "njk",
